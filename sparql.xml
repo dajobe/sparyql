@@ -12,7 +12,7 @@ select * from {table} where query="PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&g
   </sampleQuery>
 </meta>
 <bindings>
-  <select itemPath="sparql.results.result" produces="XML"> 
+  <select produces="XML"> 
     <!--
         SPARQL Protocol http://www.w3.org/TR/rdf-sparql-protocol/
         HTTP binding:
@@ -25,12 +25,35 @@ select * from {table} where query="PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&g
       <key id='service' type='xs:uri'    paramType='variable' required='true' />
     </inputs>
 
+
+<!--
+headers: {"x-joseki-server":"Joseki-3.4.1-SNAPSHOT","x-cache":"MISS from yqlcache1.pipes.sp1.yahoo.com","via":"1.0 yqlcache1.pipes.sp1.yahoo.com:3128 (squid/2.7.STABLE6)","content-type":"application/sparql-results+xml","age":"2","x-cache-lookup":"MISS from yqlcache1.pipes.sp1.yahoo.com:3128","cache-control":"no-cache","pragma":"no-cache","vary":"YahooTransform","server":"YTS/1.17.17","date":"Thu, 08 Oct 2009 02:11:45 GMT","transfer-encoding":"chunked"}.
+-->
+
     <execute>
     <![CDATA[
 url = unescape(service) + "?query=" + escape(query);
+url = 'http://triplr.org/static/output.srx';
 var resp = y.rest(url).accept("application/sparql-results+xml").get();
 var data = resp.response;
-response.object = data;
+var ct   = resp.headers['content-type'];
+
+default xml namespace = ''; 
+var sparqlns = new Namespace('http://www.w3.org/2005/sparql-results#'); 
+
+var xdata = <sparql>{data}</sparql>;
+
+var results = <sparql/>;
+for each (var result in xdata.sparqlns::sparql.sparqlns::results.children()) {
+  var row = <result/>;
+  for each (var binding in result.children()) {
+    var b = <{binding.@name}/>;
+    b.appendChild(binding.children());
+    row.appendChild(b);
+  }
+  results.sparql += row;
+}
+response.object = results;
   ]]>
     </execute>
   </select>
