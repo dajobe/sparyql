@@ -25,11 +25,6 @@ select * from {table} where query="PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&g
       <key id='service' type='xs:uri'    paramType='variable' required='true' />
     </inputs>
 
-
-<!--
-headers: {"x-joseki-server":"Joseki-3.4.1-SNAPSHOT","x-cache":"MISS from yqlcache1.pipes.sp1.yahoo.com","via":"1.0 yqlcache1.pipes.sp1.yahoo.com:3128 (squid/2.7.STABLE6)","content-type":"application/sparql-results+xml","age":"2","x-cache-lookup":"MISS from yqlcache1.pipes.sp1.yahoo.com:3128","cache-control":"no-cache","pragma":"no-cache","vary":"YahooTransform","server":"YTS/1.17.17","date":"Thu, 08 Oct 2009 02:11:45 GMT","transfer-encoding":"chunked"}.
--->
-
     <execute>
     <![CDATA[
 url = unescape(service) + "?query=" + escape(query);
