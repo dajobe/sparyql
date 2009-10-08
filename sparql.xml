@@ -28,9 +28,9 @@ select * from {table} where query="PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/&g
     <execute>
     <![CDATA[
 url = unescape(service) + "?query=" + escape(query);
+
 var resp = y.rest(url).accept("application/sparql-results+xml").get();
 var data = resp.response;
-var ct   = resp.headers['content-type'];
 
 default xml namespace = ''; 
 var sparqlns = new Namespace('http://www.w3.org/2005/sparql-results#'); 
