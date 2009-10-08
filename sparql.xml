@@ -43,12 +43,14 @@ var sparqlns = new Namespace('http://www.w3.org/2005/sparql-results#');
 
 var xdata = <sparql>{data}</sparql>;
 
-var results = <sparql/>;
-for each (var result in xdata.sparqlns::sparql.sparqlns::results.children()) {
+var results = <sparql>
+  <query>{query}</query>
+</sparql>;
+for each (var result in xdata.sparqlns::sparql.sparqlns::results.*) {
   var row = <result/>;
-  for each (var binding in result.children()) {
+  for each (var binding in result.*) {
     var b = <{binding.@name}/>;
-    b.appendChild(binding.children());
+    b.appendChild(binding.*);
     row.appendChild(b);
   }
   results.sparql += row;
