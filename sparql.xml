@@ -1,0 +1,42 @@
+<table xmlns="http://query.yahooapis.com/v1/schema/table.xsd"
+       securityLevel="any"
+       https="false"
+       >
+<!-- http://developer.yahoo.com/yql/guide/yql-opentables-reference.html -->
+<meta>
+  <author>Dave Beckett</author>
+  <documentationURL>http://triplr.org/sparyql</documentationURL>
+  <sampleQuery>select * from {table} where query="SPARQL QUERY" and url="SPARQL ENDPOINT" e.g.
+   select * from {table} where query="PREFIX+foaf%3A+%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E+SELECT+%24nick%2C+%24name+WHERE+{+%24x+a+foaf%3APerson+.+%24x+foaf%3Anick+%24nick+.+%24x+foaf%3Aname+%24name+}" from &lt;http://&gt;" and url="http://librdf.org/query"
+  select * from sparql where query="PREFIX+foaf%3A+%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E+SELECT+%24nick%2C+%24name+WHERE+{+%24x+a+foaf%3APerson+.+%24x+foaf%3Anick+%24nick+.+%24x+foaf%3Aname+%24name+}" and url="http://librdf.org/query" ;
+<!--
+   select * from {table} where query="SELECT * from &lt;...&gt;" and url="http://sparql.org/sparql"
+-->
+  </sampleQuery>
+</meta>
+<bindings>
+  <select itemPath="sparql.results" produces="XML"> 
+    <!--
+        SPARQL Protocol http://www.w3.org/TR/rdf-sparql-protocol/
+        HTTP binding:
+	{ endpoint} ?query={query} & default-graph-uri={uri}
+
+        Want Content-Type: application/sparql-results+xml
+    -->
+    <inputs>
+      <key id='query'  type='xs:string' paramType='variable' required='true' />
+      <key id='url'    type='xs:uri'    paramType='variable' required='true' />
+      <key id='type'   type='xs:string' paramType='variable' default='application/sparql-results+xml' />
+    </inputs>
+
+    <execute>
+    <![CDATA[
+url = unescape(url) + "?query=" + query;
+var data = y.rest(url).get().response;
+response.object = data;
+  ]]>
+    </execute>
+  </select>
+</bindings>
+
+</table>
