@@ -5,7 +5,7 @@
 <!-- http://developer.yahoo.com/yql/guide/yql-opentables-reference.html -->
 <meta>
   <author>Dave Beckett</author>
-  <documentationURL>http://triplr.org/sparyql</documentationURL>
+  <documentationURL>http://triplr.org/sparyql/</documentationURL>
   <sampleQuery>select * from {table} where query="SPARQL QUERY" and service="SPARQL ENDPOINT URL" e.g.
 select * from {table} where query="PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/> SELECT $nick $name FROM &lt;http://www.dajobe.org/foaf.rdf> WHERE { $x a foaf:Person . $x foaf:nick $nick . $x foaf:name $name }" and service="http://sparql.org/sparql"
   </sampleQuery>
