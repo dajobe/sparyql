@@ -6,12 +6,8 @@
 <meta>
   <author>Dave Beckett</author>
   <documentationURL>http://triplr.org/sparyql</documentationURL>
-  <sampleQuery>select * from {table} where query="SPARQL QUERY" and url="SPARQL ENDPOINT" e.g.
-   select * from {table} where query="PREFIX+foaf%3A+%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E+SELECT+%24nick%2C+%24name+WHERE+{+%24x+a+foaf%3APerson+.+%24x+foaf%3Anick+%24nick+.+%24x+foaf%3Aname+%24name+}" from &lt;http://&gt;" and url="http://librdf.org/query"
-  select * from sparql where query="PREFIX+foaf%3A+%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E+SELECT+%24nick%2C+%24name+WHERE+{+%24x+a+foaf%3APerson+.+%24x+foaf%3Anick+%24nick+.+%24x+foaf%3Aname+%24name+}" and url="http://librdf.org/query" ;
-<!--
-   select * from {table} where query="SELECT * from &lt;...&gt;" and url="http://sparql.org/sparql"
--->
+  <sampleQuery>select * from {table} where query="SPARQL QUERY" and service="SPARQL ENDPOINT URL" e.g.
+select * from {table} where query="PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/> SELECT $nick $name FROM &lt;http://www.dajobe.org/foaf.rdf> WHERE { $x a foaf:Person . $x foaf:nick $nick . $x foaf:name $name }" and service="http://sparql.org/sparql"
   </sampleQuery>
 </meta>
 <bindings>
@@ -21,18 +17,17 @@
         HTTP binding:
 	{ endpoint} ?query={query} & default-graph-uri={uri}
 
-        Want Content-Type: application/sparql-results+xml
+        Requires/assumes application/sparql-results+xml response.
     -->
     <inputs>
       <key id='query'  type='xs:string' paramType='variable' required='true' />
-      <key id='url'    type='xs:uri'    paramType='variable' required='true' />
-      <key id='type'   type='xs:string' paramType='variable' default='application/sparql-results+xml' />
+      <key id='service' type='xs:uri'    paramType='variable' required='true' />
     </inputs>
 
     <execute>
     <![CDATA[
-url = unescape(url) + "?query=" + query;
-var data = y.rest(url).accept(type).get().response;
+url = unescape(service) + "?query=" + escape(query);
+var data = y.rest(url).accept("application/sparql-results+xml").get().response;
 response.object = data;
   ]]>
     </execute>
