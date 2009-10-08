@@ -20,14 +20,15 @@ select * from {table} where query="PREFIX foaf: &lt;http://xmlns.com/foaf/0.1/> 
         Requires/assumes application/sparql-results+xml response.
     -->
     <inputs>
-      <key id='query'  type='xs:string' paramType='variable' required='true' />
+      <key id='query'   type='xs:string' paramType='variable' required='true' />
       <key id='service' type='xs:uri'    paramType='variable' required='true' />
     </inputs>
 
     <execute>
     <![CDATA[
 url = unescape(service) + "?query=" + escape(query);
-var data = y.rest(url).accept("application/sparql-results+xml").get().response;
+var resp = y.rest(url).accept("application/sparql-results+xml").get();
+var data = resp.response;
 response.object = data;
   ]]>
     </execute>
