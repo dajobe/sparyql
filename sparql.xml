@@ -15,7 +15,7 @@
   </sampleQuery>
 </meta>
 <bindings>
-  <select itemPath="sparql.results" produces="XML"> 
+  <select itemPath="sparql.results.result" produces="XML"> 
     <!--
         SPARQL Protocol http://www.w3.org/TR/rdf-sparql-protocol/
         HTTP binding:
@@ -32,7 +32,7 @@
     <execute>
     <![CDATA[
 url = unescape(url) + "?query=" + query;
-var data = y.rest(url).get().response;
+var data = y.rest(url).accept(type).get().response;
 response.object = data;
   ]]>
     </execute>
