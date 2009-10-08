@@ -1,7 +1,7 @@
 all: check
 
 check:
-	xmllint --schema table.xsd --noout sparql.xml
+	xmllint --schema table.xsd --noout --nonet sparql.xml
 
 push: check
 	./push.sh
