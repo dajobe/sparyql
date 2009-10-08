@@ -50,7 +50,10 @@ for each (var result in xdata.sparqlns::sparql.sparqlns::results.*) {
   var row = <result/>;
   for each (var binding in result.*) {
     var b = <{binding.@name}/>;
-    b.appendChild(binding.*);
+    for each (var e in binding.elements()) {
+      b.appendChild(<type>{e.localName()}</type>);
+      b.appendChild(<value>{e.text()}</value>);
+    }
     row.appendChild(b);
   }
   results.sparql += row;
