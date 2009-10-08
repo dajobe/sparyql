@@ -40,9 +40,9 @@ var xdata = <sparql>{data}</sparql>;
 var results = <sparql>
   <query>{query}</query>
 </sparql>;
-for each (var result in xdata.sparqlns::sparql.sparqlns::results.*) {
+for each (var result in xdata.sparqlns::sparql.sparqlns::results.elements()) {
   var row = <result/>;
-  for each (var binding in result.*) {
+  for each (var binding in result.elements()) {
     var b = <{binding.@name}/>;
     for each (var e in binding.elements()) {
       b.appendChild(<type>{e.localName()}</type>);
