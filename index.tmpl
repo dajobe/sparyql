@@ -24,7 +24,7 @@ YQL Query:
     and service="http://sparql.org/sparql"
 </pre>
 <a href="http://developer.yahoo.com/yql/console/?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20*%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24s%20%24p%20%24o%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20{%20%24s%20%24p%20%24o%20}%20LIMIT%2010%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22">Run in YDN console</a><br />
-<a href="http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20*%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24s%20%24p%20%24o%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20%7B%20%24s%20%24p%20%24o%20%7D%20LIMIT%2010%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22&format=xml">REST query results</a>
+<a href="http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20*%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24s%20%24p%20%24o%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20%7B%20%24s%20%24p%20%24o%20%7D%20LIMIT%2010%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22&amp;format=xml">REST query results</a>
 </li>
 
 <li>Example 2: get friend's nick and names from a FOAF file<br />
@@ -35,7 +35,7 @@ YQL Query:
     and service="http://sparql.org/sparql"
 </pre>
 <a href="http://developer.yahoo.com/yql/console/?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20*%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24nick%20%24name%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20{%20%24x%20a%20foaf%3APerson%20.%20%24x%20foaf%3Anick%20%24nick%20.%20%24x%20foaf%3Aname%20%24name%20}%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22">Run in YDN Console</a><br />
-<a href="http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20*%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24nick%20%24name%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20%7B%20%24x%20a%20foaf%3APerson%20.%20%24x%20foaf%3Anick%20%24nick%20.%20%24x%20foaf%3Aname%20%24name%20%7D%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22&format=xml">REST query results</a>
+<a href="http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20*%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24nick%20%24name%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20%7B%20%24x%20a%20foaf%3APerson%20.%20%24x%20foaf%3Anick%20%24nick%20.%20%24x%20foaf%3Aname%20%24name%20%7D%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22&amp;format=xml">REST query results</a>
 </li>
 
 <li>Example 3 - select just one field: value of object triple<br />
@@ -46,7 +46,7 @@ YQL Query:
     and service="http://sparql.org/sparql"
 </pre>
 <a href="http://developer.yahoo.com/yql/console/?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20result.o.value%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24s%20%24p%20%24o%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20{%20%24s%20%24p%20%24o%20}%20LIMIT%2010%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22">Run in YDN Console</a><br />
-<a href="http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20result.o.value%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24s%20%24p%20%24o%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20%7B%20%24s%20%24p%20%24o%20%7D%20LIMIT%2010%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22&format=xml">REST query results</a>
+<a href="http://query.yahooapis.com/v1/public/yql?q=use%20%22http%3A%2F%2Ftriplr.org%2Fsparyql%2Fsparql.xml%22%20as%20sparql%3B%0A%20%20select%20result.o.value%20from%20sparql%20where%20query%3D%22PREFIX%20foaf%3A%20%3Chttp%3A%2F%2Fxmlns.com%2Ffoaf%2F0.1%2F%3E%20SELECT%20%24s%20%24p%20%24o%20FROM%20%3Chttp%3A%2F%2Fwww.dajobe.org%2Ffoaf.rdf%3E%20WHERE%20%7B%20%24s%20%24p%20%24o%20%7D%20LIMIT%2010%22%0A%20%20%20%20and%20service%3D%22http%3A%2F%2Fsparql.org%2Fsparql%22&amp;format=xml">REST query results</a>
 </li>
 </ol>
 
